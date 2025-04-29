@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 
 # Load the model from a local path
-model_path = r'C:\Users\dolap\OneDrive\Documents\DOLAPO\data-analysis\filadentification\model\filadentification.h5'
+model_path = "model\filadentification.h5"'
 model = tf.keras.models.load_model(model_path)
 
 # Define your class names
@@ -39,10 +39,10 @@ interface = gr.Interface(
     fn=predict,
     inputs=gr.Image(type="pil", label="Upload an image"),
     outputs=gr.Markdown(),
-    title="🧢 Fila Yoruba Detector",
+    title="Fila Yoruba Detector",
     description="""
         <div style='text-align: center'>
-            <img src="https://i.imgur.com/MlCK4Hc.png" width="100"/>
+            <img src="https://github.com/DolapoSalim/my-phd-website-2/blob/adjusted/assets/images/favicons.jpg" width="100"/>
             <p>Upload an image. This model will predict whether the image contains the traditional Yoruba people's <strong>fila</strong> or not.</p>
         </div>
     """,
