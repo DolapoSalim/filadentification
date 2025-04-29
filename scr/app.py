@@ -8,7 +8,7 @@ model_path = "model\filadentification.h5"'
 model = tf.keras.models.load_model(model_path)
 
 # Define your class names
-class_names = ["not-fila", "fila"]  # Adjusted order to match logic: 0 -> not-fila, 1 -> fila
+class_names = ["fila", "no-fila"]  # Adjusted order to match logic: 0 -> not-fila, 1 -> fila
 
 # Prediction function
 def predict(image):
@@ -31,7 +31,7 @@ def predict(image):
         confidence = np.max(prob)
 
     confidence_percentage = confidence * 100
-    result_text = f"Prediction: **{predicted_class}**\nConfidence: **{confidence_percentage:.2f}%**"
+    result_text = f"Prediction: image contains **{predicted_class}**\nConfidence: **{confidence_percentage:.2f}%**"
     return result_text
 
 # Gradio interface
@@ -43,7 +43,7 @@ interface = gr.Interface(
     description="""
         <div style='text-align: center'>
             <img src="https://github.com/DolapoSalim/my-phd-website-2/blob/adjusted/assets/images/favicons.jpg" width="100"/>
-            <p>Upload an image. This model will predict whether the image contains the traditional Yoruba people's <strong>fila</strong> or not.</p>
+            <h3>Upload an image. This model will predict whether the image contains the traditional Yoruba people's <strong>fila</strong> or not.</h3>
         </div>
     """,
     theme="default"
