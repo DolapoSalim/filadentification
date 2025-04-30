@@ -17,10 +17,9 @@ def predict(image):
     image = np.array(image) / 255.0
     image = np.expand_dims(image, axis=0)
 
-    # Predict
+ 
     prediction = model.predict(image)
 
-    # Handle sigmoid or softmax output
     if prediction.shape[-1] == 1:
         prob = prediction[0][0]
         predicted_class = class_names[int(prob > 0.5)]
@@ -34,7 +33,7 @@ def predict(image):
     result_text = f"Prediction: image contains **{predicted_class}**\nConfidence: **{confidence_percentage:.2f}%**"
     return result_text
 
-# Gradio interface
+
 interface = gr.Interface(
     fn=predict,
     inputs=gr.Image(type="pil", label="Upload an image"),
@@ -49,5 +48,5 @@ interface = gr.Interface(
     theme="default"
 )
 
-# Run the app
+
 interface.launch(share=True)
